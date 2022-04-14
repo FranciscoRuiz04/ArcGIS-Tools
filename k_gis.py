@@ -1,3 +1,13 @@
+__author__ = "Ulises Francisco Ruiz Gomez"
+__copyright__ = "Copyright 2022, GPS"
+__credits__ = "GPS"
+
+__version__ = "1.0.2"
+__maintainer__ = "Francisco Ruiz"
+__email__ = "uf.ruizgomez@ugto.mx"
+__status__ = "Developer"
+
+
 import os
 import pandas as pd
 import arcpy
