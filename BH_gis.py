@@ -4,7 +4,7 @@ __credits__ = "GPS"
 
 __version__ = "1.0.1"
 __maintainer__ = "Francisco Ruiz"
-__email__ = "uf.ruizgomez@ugto.mx"
+__email__ = "franciscoruiz078@gmail.com"
 __status__ = "Developer"
 
 #+++++++++++++++++++++++++  LIBRARIES   +++++++++++++++++++++++++++++
