@@ -36,6 +36,15 @@ arcpy.AddMessage("Creating summary")
 arcpy.Statistics_analysis(in_table=tab_name, out_table=statis_file, statistics_fields=[["US_EDAFO", "COUNT"]], case_field=["US_EDAFO"])
 
 
+#Criteria
+criteria = {
+    "Agricultura de temporal": "Cultivos Legumbres o rotación de pradera",
+    "Área sin vegetación aparente": "Barbecho, áreas incultas y desnudas",
+    "Bosque de encino": "Bosque Cubierto del 50 al 75%",
+    "Chaparral": "Pastizal Más del 75% - Poco -",
+    }
+
+
 #Get ks
 class Suelo:
     def __init__(self, type, permea):
@@ -43,24 +52,19 @@ class Suelo:
         self.permea = permea
     
     def iguala(self):
-        if self.tipo == "Agricultura de riego (incluye riego eventual)" or self.tipo == "Agricultura de humedad":
-            suelo_k = "Cultivos En Hilera"
-        elif self.tipo == "Agricultura de temporal":
-            suelo_k = "Cultivos Legumbres o rotación de pradera"
-        elif self.tipo == "Área sin vegetación aparente":
-            suelo_k = "Barbecho, áreas incultas y desnudas"
-        elif self.tipo == "Asentamiento humano" or self.tipo == "Cuerpo de agua":
-            suelo_k = "Zonas urbanas"
-        elif self.tipo == "Bosque de encino":
-            suelo_k = "Bosque Cubierto del 50 al 75%"
-        elif self.tipo == "Bosque de pino" or self.tipo == "Bosque de pino-encino (incluye encino-pino)":
-            suelo_k = "Bosque Cubierto más del 75%"
-        elif self.tipo == "Chaparral":
-            suelo_k = "Pastizal Más del 75% - Poco -"
-        elif self.tipo == "Matorral crasicaule" or self.tipo == "Mezquital (incluye huizachal)" or self.tipo == "Pastizal natural (incluye pastizal - huizachal)":
-            suelo_k = r"Pastizal Menos del 50% - Excesivo -"
-        elif self.tipo == "Matorral subtropical" or self.tipo == "Pastizal inducido" or self.tipo == "Vegetación halófila y gipsófila":
-            suelo_k = "Pastizal Del 50 al 75% - Regular -"
+        try:
+            suelo_k = criteria[self.tipo]
+        except:
+            if self.tipo == "Agricultura de riego (incluye riego eventual)" or self.tipo == "Agricultura de humedad":
+                suelo_k = "Cultivos En Hilera"
+            elif self.tipo == "Asentamiento humano" or self.tipo == "Cuerpo de agua":
+                suelo_k = "Zonas urbanas"
+            elif self.tipo == "Bosque de pino" or self.tipo == "Bosque de pino-encino (incluye encino-pino)":
+                suelo_k = "Bosque Cubierto más del 75%"
+            elif self.tipo == "Matorral crasicaule" or self.tipo == "Mezquital (incluye huizachal)" or self.tipo == "Pastizal natural (incluye pastizal - huizachal)":
+                suelo_k = r"Pastizal Menos del 50% - Excesivo -"
+            elif self.tipo == "Matorral subtropical" or self.tipo == "Pastizal inducido" or self.tipo == "Vegetación halófila y gipsófila":
+                suelo_k = "Pastizal Del 50 al 75% - Regular -"
         
         return suelo_k
 
