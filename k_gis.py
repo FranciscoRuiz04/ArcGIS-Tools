@@ -36,6 +36,7 @@ if not os.path.isdir(output_location):
     os.mkdir(output_location)
 statis_file = output_location + os.sep + 'statistics.csv'
 
+
 arcpy.AddMessage("Creating summary")
 #++++++++++++++++++++++++++     Generate statistic file     +++++++++++++++++++++++
 arcpy.Statistics_analysis(in_table=tab_name, out_table=statis_file, statistics_fields=[["US_EDAFO", "COUNT"]], case_field=["US_EDAFO"])
