@@ -146,7 +146,7 @@ i = 0
 while i < len(ptemp_tab.index):
     esc = escorrentia(outcome_tab['K'].iloc[i], outcome_tab['POND_PRECIP'].iloc[i], 2)
     et = et_turc(outcome_tab['POND_PRECIP'].iloc[i], outcome_tab['POND_TMP'].iloc[i], 2)
-    infil_value = infil(outcome_tab['POND_PRECIP'].iloc[i], et, esc)
+    infil_value = infil(outcome_tab['POND_PRECIP'].iloc[i], et, esc)*1e-9
     esc_values.append(esc)
     et_values.append(et)
     infil_values.append(infil_value)
