@@ -156,7 +156,7 @@ arcpy.AddMessage('Adding Fields...')
 outcome_tab['ESC'] = esc_values
 outcome_tab['ET'] = et_values
 outcome_tab['INF'] = infil_values
-
+outcome_tab['INF_TOTAL'] = sum(outcome_tab['INF'])
 
 arcpy.AddMessage('Exporting...')
 #-----------------------    EXPORT OUTCOME DF    -------------------------
