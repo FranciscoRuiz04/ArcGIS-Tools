@@ -130,7 +130,6 @@ else:
     outcome_tab['TMP'] = float(experimental_tmp)
 
 outcome_tab['POND_TMP'] = outcome_tab['TMP'] * ptemp_tab['POLY_AREA']
-outcome_tab['POND_TMP'] = outcome_tab['TMP'] * ptemp_tab['POLY_AREA']
 
 if experimental_k == '':
     outcome_tab['K'] = ptemp_tab['K']
