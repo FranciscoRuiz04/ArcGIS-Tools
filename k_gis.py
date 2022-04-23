@@ -17,6 +17,7 @@ import arcpy
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Parameters   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 tab_name = arcpy.GetParameterAsText(0)  #Land shp file
 output_location = arcpy.GetParameterAsText(1)
+landuse = arcpy.GetParameterAsText(2)
 
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Enviroment Arguments   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -91,7 +92,10 @@ ks_records = pd.read_csv(complete_path + os.sep + "GPS_COEFICIENTES.csv", encodi
 
 for i,rec in records.iterrows():
     #Aplicate criteria for ks
-    land_type = rec["US_EDAFO"].split("/")[0].strip()
+    if landuse == '':
+        land_type = rec["US_EDAFO"].split("/")[0].strip()
+    else:
+        land_type = landuse
     land_permea = rec["US_EDAFO"].split("/")[1].strip()
     land = Suelo(land_type, land_permea)
     try:
