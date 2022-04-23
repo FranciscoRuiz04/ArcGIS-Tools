@@ -122,6 +122,7 @@ arcpy.AddMessage('Calculated...')
 #------------------------    OUTCOME FILLING    --------------------------
 #-------------------------------------------------------------------------
 outcome_tab['ID_STATION'] = ptemp_tab['ID_ESTACIO']
+outcome_tab['PRECIP'] = ptemp_tab['PRECIP']
 outcome_tab['POND_PRECIP'] = ptemp_tab['PRECIP'] * ptemp_tab['POLY_AREA']
 
 if experimental_tmp == '':
@@ -155,7 +156,10 @@ arcpy.AddMessage('Adding Fields...')
 outcome_tab['ESC'] = esc_values
 outcome_tab['ET'] = et_values
 outcome_tab['INF'] = infil_values
-outcome_tab['INF_TOTAL'] = sum(outcome_tab['INF'])
+outcome_tab['PRECIP_T'] = sum(outcome_tab['PRECIP'])
+outcome_tab['ESC_T'] = sum(outcome_tab['ESC'])
+outcome_tab['ET_T'] = sum(outcome_tab['ET'])
+outcome_tab['INF_T'] = sum(outcome_tab['INF'])
 
 arcpy.AddMessage('Exporting...')
 #-----------------------    EXPORT OUTCOME DF    -------------------------
