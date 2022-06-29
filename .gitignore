@@ -3,3 +3,4 @@ SIG_sheet.py
 SIG_shp.py
 __pycache__/
 get_ks.py
+.env

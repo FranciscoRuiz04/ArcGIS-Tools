@@ -12,6 +12,7 @@ __status__ = "Developer"
 import os
 import pandas as pd
 import arcpy
+from dotenv import load_dotenv as env
 
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Parameters   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -25,7 +26,8 @@ arcpy.env.overwriteOutput = False
 
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Arguments   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-complete_path = r"C:\Users\Francisco Ruiz\OneDrive - Universidad de Guanajuato\UG\SEM_6\SIG_AVANZADO_2022\SEMANA_08"
+env()
+complete_path = os.getenv('root')
 ks_records = pd.read_csv(complete_path + os.sep + "GPS_COEFICIENTES.csv", encoding='utf-8')
 output_location += os.sep + 'aux_Ks'
 
